@@ -1,16 +1,28 @@
 class Solution {
-public:
-    int search(vector<int>& arr, int target) {
-        int s=0;
-        int e=arr.size();
-        int mid=s+(e-s)/2;
-        while(s<e){
-            if(arr[mid]==target) return mid;
-            else if(arr[mid]> target) e--;
-            else s++;
-             mid=s+(e-s)/2;
+     private:
+     
+int bs(vector<int>&arr,int low,int high,int target){
+  
+  
+        if(low>high) return -1;
+        int mid=(low+high)/2;
+
+        if(arr[mid]==target){
+            return mid;
+        }
+        else if(arr[mid] > target){
+          return   bs(arr,low,mid-1,target);
+        }
+        else{
+          return   bs(arr,mid+1,high,target);
 
         }
-        return -1;
+    }
+
+
+public:
+    int search(vector<int>& nums, int target) {
+         return bs(nums,0,nums.size()-1 , target);
     }
 };
+
