@@ -12,7 +12,7 @@ public:
             if (arr[mid] == target)
                 return mid;
 
-            // LEFT HALF SORTED
+           
             if (arr[l] <= arr[mid]) {
 
                 if (target >= arr[l] && target < arr[mid]) {
@@ -23,7 +23,7 @@ public:
                 }
             }
 
-            // RIGHT HALF SORTED
+            
             else {
 
                 if (target > arr[mid] && target <= arr[e]) {
