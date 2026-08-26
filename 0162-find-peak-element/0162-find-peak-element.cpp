@@ -7,14 +7,14 @@ public:
             int mid = s + (e - s) / 2;
 
             if (arr[mid] < arr[mid + 1]) {
-                // If slope is rising, peak is to the right
+               
                 s = mid + 1;
             } else {
-                // If slope is falling or at peak, move left
+               
                 e = mid;
             }
         }
 
-        return s; // or return e (both are same here)
+        return s; 
     }
 };
