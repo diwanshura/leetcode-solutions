@@ -1,19 +1,26 @@
 class Solution {
 public:
     int singleNonDuplicate(vector<int>& arr) {
-        int size=arr.size();
-        int ans=0;
-        unordered_map<int,int>hash;
-        for(int i=0 ; i<size ; i++){
-            hash[arr[i]]++;
-        }
+        int s = 0;
+        int e = arr.size() - 1;
 
-        for(int i=0 ; i<size ;i++){
-            if(hash[arr[i]]==1){
-                ans= arr[i];
-                break;
+        while (s < e) {
+            int mid = s + (e - s) / 2;
+
+          
+            if (mid % 2 == 1)
+                mid--;
+
+            if (arr[mid] == arr[mid + 1]) {
+               
+                s = mid + 2;
+            } 
+            else {
+                
+                e = mid;
             }
         }
-        return ans;
+
+        return arr[s];
     }
 };
