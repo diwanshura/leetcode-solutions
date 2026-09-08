@@ -14,7 +14,7 @@ class Solution {
         long long total = 0;
 
         for (int i = 0; i < arr.size(); i++) {
-            total += (arr[i] + k - 1) / k;
+           total +=(arr[i] + k - 1) / k;
         }
 
         return total;
@@ -23,25 +23,22 @@ class Solution {
 public:
     int minEatingSpeed(vector<int>& arr, int h) {
 
-        int s = 1;
-        int e = maxFunction(arr);
+        int s=1;
+       int e=maxFunction(arr);
 
-        while (s <= e) {
+        while(s<=e){
+            int mid=s+(e-s)/2;
+            long long hour=totalHrs(arr,mid);
+            if(  hour<= h){
+               
+                e=mid-1;
 
-            int mid = s + (e - s) / 2;
-
-            long long hours = totalHrs(arr, mid);
-
-            if (hours <= h) {
-                // mid speed works, try smaller
-                e = mid - 1;
             }
-            else {
-                // mid speed is too slow, increase speed
-                s = mid + 1;
+            else{
+                s=mid+1;
             }
         }
 
-        return s;
+      return s;
     }
 };
