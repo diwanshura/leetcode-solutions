@@ -22,18 +22,20 @@ public:
     int smallestDivisor(vector<int>& arr, int threshold) {
         int s=1;
         int e=maximum(arr);
+        int ans=10000;
 
-        while(s<e){
+        while(s<=e){
             int mid=s+(e-s)/2;
         int div=divisor(arr,mid);
 
-            if(div  > threshold){
-                s=mid+1;
+            if(div  <= threshold){
+                ans=mid;
+                e=mid-1;
             }
             else{
-                e=mid;
+                s=mid+1;
             }
         }
-        return s;
+        return ans;
     }
 };
