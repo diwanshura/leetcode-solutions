@@ -3,10 +3,17 @@ public:
     void rotate(vector<int>& arr, int k) {
         int n = arr.size();
 
-        if (n == 0) return;
+        k=k%n;
+        vector<int>ans(n);
+        for(int i=0 ; i<n ; i++){
+            ans[(i+k)%n]=arr[i];
 
-        k = k % n;
+        }
+        for(int i=0 ; i<n ; i++){
+           arr[i]=ans[i];
 
-        std::rotate(arr.begin(), arr.end() - k, arr.end());
+        }
+
+
     }
 };
